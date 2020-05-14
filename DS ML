@@ -1,0 +1,43 @@
+select r.name as rname,  s.name as sname, a.name as aname
+from region as r
+join sales_reps as s
+on r.id=s.region_id
+join accounts as a
+on a.sales_rep_id=s.id
+where r.name = 'Midwest'
+order by aname
+
+
+
+select r.name as rname, s.name as sname, a.name as aname
+from region as r
+join sales_reps as s
+on r.id = s.region_id
+join accounts as a
+on s.id = a.sales_rep_id
+where r.name = 'Midwest' and s.name like 'S%'
+order by aname
+
+select a.name as aname, s.name as sname, r.name as rname
+from sales_reps as s
+join region as r
+on s.region_id=r.id
+join accounts as a 
+on a.sales_rep_id=s.id
+where r.name = 'Midwest' and s.name like ('% K%')
+order by aname
+
+
+#Ex4
+select a.name as aname, r.name as rname, o.total_amt_usd / (o.total+0.01) as price, o.standard_qty as s
+from region as r
+join sales_reps as s
+on s.region_id=r.id
+join accounts as a 
+on a.sales_rep_id=s.id
+join orders as o
+on a.id=o.account_id
+where o.standard_qty>100 and o.poster_qty >50
+order by price desc
+
+

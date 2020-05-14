@@ -40,4 +40,19 @@ on a.id=o.account_id
 where o.standard_qty>100 and o.poster_qty >50
 order by price desc
 
+#lesson2part19-7
+select distinct a.name as aname, w.channel as ch
+from accounts as a
+join web_events as w
+on w.account_id=a.id
+where a.id = '1001'
+
+
+
+#lesson2part19-7
+select o.occurred_at as oc, a.name as aname , o.total as t, o.total_amt_usd
+from orders as o
+join accounts as a
+on a.id=o.account_id
+where o.occurred_at between '2015.01.01' and '2016.01.01'
 

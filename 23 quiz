@@ -1,0 +1,34 @@
+select sum(o.total_amt_usd), o.account_id
+from sales_reps s
+join accounts a
+on a.sales_rep_id = s.id
+join orders o
+on o.account_id = a.id
+group by o.account_id
+having sum(o.total_amt_usd)<1000
+
+select sum(o.total_amt_usd), o.account_id
+from sales_reps s
+join accounts a
+on a.sales_rep_id = s.id
+join orders o
+on o.account_id = a.id
+group by o.account_id
+order by sum desc
+
+
+
+select  sum(total_amt_usd) as total, date_part('month',occurred_at) as month
+from orders o
+group by month
+order by total desc
+
+select  sum(total) as total, date_part('year',occurred_at) as year
+from orders o
+group by year
+order by total desc
+
+select  sum(total) as total, date_part('month',occurred_at) as month
+from orders o
+group by month
+order by total desc
